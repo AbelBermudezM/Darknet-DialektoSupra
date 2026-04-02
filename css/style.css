@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark-reasonable.min.css');
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css');
+
+@layer base {
+    body {
+        @apply bg-dark-900 text-gray-300 font-sans antialiased overflow-x-hidden;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #050508;
+}
+::-webkit-scrollbar-thumb {
+    background: #1c1c2e;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00f0ff;
+}
+
+/* Effects */
+.hex-bg {
+    background-color: #050508;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%2300f0ff' fill-opacity='0.03' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-7.5L27.99 34H28v2.31h-.01L17 42.65V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.neural-bg {
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(184, 41, 221, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(0, 255, 157, 0.1) 0%, transparent 50%);
+}
+
+.cyber-grid {
+    background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.glass {
+    background: rgba(19, 19, 31, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.glass-hover:hover {
+    background: rgba(0, 240, 255, 0.05);
+    border-color: rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #00f0ff 0%, #b829dd 50%, #ff006e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.glitch-text {
+    position: relative;
+    display: inline-block;
+}
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-dark-900, #050508);
+}
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff006e;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -2px 0 #00f0ff;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+.scanline {
+    position: relative;
+    overflow: hidden;
+}
+.scanline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 240, 255, 0.02) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+}
+
+.cursor-blink::after {
+    content: '█';
+    animation: blink 1s infinite;
+    color: #00f0ff;
+}
+
+.audio-bar {
+    width: 4px;
+    background-color: #00f0ff;
+    border-radius: 2px 2px 0 0;
+    transition: height 0.05s ease;
+}
+
+/* Base OFM Styles */
+#blog-content img { @apply max-w-full rounded-lg border border-cyber-cyan/20; }
+#blog-content a { @apply text-cyber-cyan hover:underline; }
+#blog-content h1, #blog-content h2, #blog-content h3 { @apply mt-8 mb-4 text-white font-bold; }
+#blog-content h1 { @apply text-3xl; }
+#blog-content h2 { @apply text-2xl; }
+#blog-content h3 { @apply text-xl; }
+#blog-content p { @apply mb-6 leading-relaxed text-gray-300; }
+#blog-content ul, #blog-content ol { @apply mb-6 pl-8; list-style-type: disc; }
+#blog-content ol { list-style-type: decimal; }
+#blog-content li { @apply mb-2; }
+#blog-content pre { @apply bg-dark-800 p-4 rounded-lg overflow-x-auto border border-white/10 mb-6; }
+#blog-content code { @apply font-mono text-sm; }
+#blog-content p code, #blog-content li code { @apply bg-cyber-cyan/10 text-cyber-cyan px-2 py-1 rounded; }
+#blog-content blockquote { @apply border-l-4 border-cyber-purple pl-4 text-gray-400 italic bg-cyber-purple/5 py-1 mb-6; }
+#blog-content mark { @apply bg-cyber-amber/30 text-white px-1 rounded; }
+#blog-content table { @apply w-full border-collapse mb-8 border border-white/10; }
+#blog-content th, #blog-content td { @apply p-3 border border-white/10; }
+#blog-content th { @apply bg-dark-800 font-bold text-left; }
+
+/* OFM Callouts */
+.callout {
+    @apply border border-cyber-cyan/20 rounded-lg p-4 my-6 bg-cyber-cyan/5;
+}
+.callout-title {
+    @apply font-bold flex items-center gap-2 mb-2 text-cyber-cyan text-base;
+}
+.callout[data-callout="warning"] { @apply border-cyber-amber bg-cyber-amber/5; }
+.callout[data-callout="warning"] .callout-title { @apply text-cyber-amber; }
+.callout[data-callout="error"], .callout[data-callout="danger"] { @apply border-cyber-magenta bg-cyber-magenta/5; }
+.callout[data-callout="error"] .callout-title { @apply text-cyber-magenta; }
+.callout[data-callout="info"], .callout[data-callout="note"] { @apply border-cyber-cyan bg-cyber-cyan/5; }
+.callout[data-callout="info"] .callout-title { @apply text-cyber-cyan; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* Internal Links */
+.internal-link { @apply text-cyber-purple font-medium !important; }
+.internal-link::before { content: '[['; @apply opacity-50 font-mono text-sm; }
+.internal-link::after { content: ']]'; @apply opacity-50 font-mono text-sm; }
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darknet DialektoSupra | Multimedia Intelligence Platform</title>
+    <meta name="description"
+        content="A multilingual multimedia platform exploring darknet, cybersecurity, privacy, and digital culture. Podcast, blog, video, and community.">
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="hex-bg">
+
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrixCanvas" class="fixed inset-0 opacity-10 pointer-events-none z-0"></canvas>
+
+    <!-- Scanline Overlay -->
+    <div class="fixed inset-0 pointer-events-none z-50 opacity-20 scanline"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 glass border-b border-cyber-cyan/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onclick="window.scrollTo(0,0)">
+                    <div
+                        class="relative w-10 h-10 bg-gradient-to-br from-cyber-cyan to-cyber-purple rounded flex items-center justify-center overflow-hidden animate-glow">
+                        <div class="absolute inset-0 bg-dark-900 opacity-0 group-hover:opacity-20 transition-opacity">
+                        </div>
+                        <span class="text-white font-mono font-bold text-lg z-10 glitch-text" data-text="D">D</span>
+                        <div class="absolute inset-0 border-2 border-white/20 rounded"></div>
+                    </div>
+                    <div class="hidden md:block">
+                        <h1 class="text-white font-mono font-bold text-lg tracking-tight glitch-text"
+                            data-text="DARKNET DIALEKTOSUPRA">DARKNET DIALEKTOSUPRA</h1>
+                        <p class="text-xs text-cyber-cyan font-mono tracking-widest animate-pulse">
+                            MULTIMEDIA_INTELLIGENCE_NODE</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#broadcast"
+                        class="text-sm font-medium hover:text-cyber-cyan transition-colors font-mono group">
+                        <span
+                            class="text-cyber-cyan opacity-0 group-hover:opacity-100 transition-opacity">[</span>BROADCAST<span
+                            class="text-cyber-cyan opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+                    </a>
+                    <a href="#intelligence"
+                        class="text-sm font-medium hover:text-cyber-cyan transition-colors font-mono group">
+                        <span
+                            class="text-cyber-cyan opacity-0 group-hover:opacity-100 transition-opacity">[</span>INTELLIGENCE<span
+                            class="text-cyber-cyan opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+                    </a>
+                    <a href="#archives"
+                        class="text-sm font-medium hover:text-cyber-cyan transition-colors font-mono group">
+                        <span
+                            class="text-cyber-cyan opacity-0 group-hover:opacity-100 transition-opacity">[</span>ARCHIVES<span
+                            class="text-cyber-cyan opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+                    </a>
+                    <a href="#about"
+                        class="text-sm font-medium hover:text-cyber-cyan transition-colors font-mono group">
+                        <span
+                            class="text-cyber-cyan opacity-0 group-hover:opacity-100 transition-opacity">[</span>ABOUT<span
+                            class="text-cyber-cyan opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+                    </a>
+
+                    <!-- Language Selector -->
+                    <div class="relative group">
+                        <button
+                            class="flex items-center gap-2 text-sm font-mono text-cyber-green hover:text-cyber-cyan transition-colors border border-cyber-green/30 px-3 py-1 rounded hover:border-cyber-cyan">
+                            <span class="w-2 h-2 bg-cyber-green rounded-full animate-pulse"></span>
+                            EN
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()"
+                        class="text-gray-300 hover:text-cyber-cyan p-2 border border-cyber-cyan/30 rounded">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobileMenu" class="hidden md:hidden glass border-t border-cyber-cyan/10">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#broadcast"
+                    class="block px-3 py-2 text-base font-mono hover:text-cyber-cyan hover:bg-cyber-cyan/5 rounded">[BROADCAST]</a>
+                <a href="#intelligence"
+                    class="block px-3 py-2 text-base font-mono hover:text-cyber-cyan hover:bg-cyber-cyan/5 rounded">[INTELLIGENCE]</a>
+                <a href="#archives"
+                    class="block px-3 py-2 text-base font-mono hover:text-cyber-cyan hover:bg-cyber-cyan/5 rounded">[ARCHIVES]</a>
+                <a href="#about"
+                    class="block px-3 py-2 text-base font-mono hover:text-cyber-cyan hover:bg-cyber-cyan/5 rounded">[ABOUT]</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden neural-bg pt-16">
+        <div class="absolute inset-0 cyber-grid opacity-30"></div>
+        <div
+            class="absolute top-20 left-10 w-32 h-32 border border-cyber-cyan/20 rounded-full animate-float opacity-20">
+        </div>
+        <div class="absolute bottom-20 right-10 w-48 h-48 border border-cyber-purple/20 rounded-full animate-float opacity-20"
+            style="animation-delay: 2s;"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 border border-cyber-green/30 animate-flicker">
+                <span class="w-2 h-2 bg-cyber-green rounded-full animate-pulse"></span>
+                <span class="text-cyber-green font-mono text-sm tracking-wider">SYSTEM ONLINE //
+                    ENCRYPTED_STREAM_ACTIVE</span>
+            </div>
+
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tighter">
+                <span class="block glitch-text" data-text="DARKNET">DARKNET</span>
+                <span class="block gradient-text font-mono italic tracking-tight">DIALEKTOSUPRA</span>
+            </h1>
+
+            <div class="h-8 mb-8">
+                <p class="text-xl md:text-2xl text-gray-400 font-mono cursor-blink" id="typewriter"></p>
+            </div>
+
+            <p
+                class="max-w-3xl mx-auto text-lg text-gray-400 mb-12 leading-relaxed glass p-6 rounded-lg border border-cyber-cyan/10">
+                A <span class="text-cyber-cyan">multilingual</span> multimedia platform transcending language barriers
+                to explore
+                <span class="text-cyber-purple">digital privacy</span>, <span
+                    class="text-cyber-green">cybersecurity</span>,
+                and <span class="text-cyber-magenta">decentralized technologies</span>.
+                By learners, for learners. No experts—just curiosity.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+                <a href="#broadcast"
+                    class="group relative px-8 py-4 bg-cyber-cyan/10 border border-cyber-cyan text-cyber-cyan font-mono font-bold rounded hover:bg-cyber-cyan/20 transition-all duration-300 overflow-hidden animate-glow">
+                    <span class="relative z-10 flex items-center gap-2">ACCESS_STREAM</span>
+                </a>
+                <a href="#intelligence"
+                    class="px-8 py-4 border border-cyber-purple/50 text-cyber-purple font-mono rounded hover:bg-cyber-purple/10 hover:border-cyber-purple transition-all duration-300">
+                    EXPLORE_ARCHIVES
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="py-24 relative border-y border-cyber-cyan/10 bg-dark-800/30">
+        <div class="absolute inset-0 neural-bg opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-mono">
+                    <span class="text-cyber-cyan">[</span> CORE_VALUES <span class="text-cyber-cyan">]</span>
+                </h2>
+                <div class="h-1 w-32 bg-gradient-to-r from-cyber-cyan to-cyber-purple mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    class="glass rounded-xl p-6 border border-cyber-cyan/20 hover:border-cyber-cyan/50 transition-all group scanline">
+                    <h3 class="text-white font-bold mb-2 font-mono text-cyber-cyan">ABSOLUTE_PRIVACY</h3>
+                    <p class="text-sm text-gray-400">Tools and practices that protect data by default, separating
+                        identities and encrypting communications.</p>
+                </div>
+                <div
+                    class="glass rounded-xl p-6 border border-cyber-purple/20 hover:border-cyber-purple/50 transition-all group scanline">
+                    <h3 class="text-white font-bold mb-2 font-mono text-cyber-purple">OPERATIONAL_ANONYMITY</h3>
+                    <p class="text-sm text-gray-400">Maintaining separate personas and secure channels like PGP and
+                        OMEMO to protect identity.</p>
+                </div>
+                <div
+                    class="glass rounded-xl p-6 border border-cyber-green/20 hover:border-cyber-green/50 transition-all group scanline">
+                    <h3 class="text-white font-bold mb-2 font-mono text-cyber-green">PRACTICAL_EDUCATION</h3>
+                    <p class="text-sm text-gray-400">Learning OpSec processes and countermeasures step by step without
+                        gatekeeping.</p>
+                </div>
+                <div
+                    class="glass rounded-xl p-6 border border-cyber-magenta/20 hover:border-cyber-magenta/50 transition-all group scanline">
+                    <h3 class="text-white font-bold mb-2 font-mono text-cyber-magenta">HACKER_MINDSET</h3>
+                    <p class="text-sm text-gray-400">Curious and technical approach inspired by darknet subcultures.
+                        Questioning systems deeply.</p>
+                </div>
+                <div
+                    class="glass rounded-xl p-6 border border-cyber-amber/20 hover:border-cyber-amber/50 transition-all group scanline">
+                    <h3 class="text-white font-bold mb-2 font-mono text-cyber-amber">DIGITAL_HYGIENE</h3>
+                    <p class="text-sm text-gray-400">Secure management of data and metadata, ensuring long-term
+                        operational security.</p>
+                </div>
+                <div
+                    class="glass rounded-xl p-6 border border-cyber-blue/20 hover:border-cyber-blue/50 transition-all group scanline">
+                    <h3 class="text-white font-bold mb-2 font-mono text-cyber-blue">FREE_SOFTWARE</h3>
+                    <p class="text-sm text-gray-400">Prioritizing open-source tools for transparency and security across
+                        every layer.</p>
+                </div>
+                <div
+                    class="glass rounded-xl p-6 border border-cyber-cyan/20 hover:border-cyber-cyan/50 transition-all group scanline">
+                    <h3 class="text-white font-bold mb-2 font-mono text-cyber-cyan">DECENTRALIZATION</h3>
+                    <p class="text-sm text-gray-400">Distributed distribution avoiding single points of failure across
+                        federated networks.</p>
+                </div>
+                <div
+                    class="glass rounded-xl p-6 border border-cyber-purple/20 hover:border-cyber-purple/50 transition-all group scanline">
+                    <h3 class="text-white font-bold mb-2 font-mono text-cyber-purple">CONTINUOUS_OPTIMIZATION</h3>
+                    <p class="text-sm text-gray-400">Iterating content, processes, and strategies continuously based on
+                        metrics and feedback.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Broadcast Section (Functional Audio Player) -->
+    <section id="broadcast" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2 font-mono">
+                        <span class="text-cyber-cyan">[</span> LATEST_BROADCAST <span class="text-cyber-cyan">]</span>
+                    </h2>
+                    <div class="h-1 w-32 bg-gradient-to-r from-cyber-cyan to-cyber-purple mb-4"></div>
+                    <p class="text-gray-400">Audio-first, video-enhanced. Choose your preferred format.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="switchTab('audio')" id="tab-audio"
+                        class="px-4 py-2 rounded font-mono text-sm animate-glow bg-cyber-cyan text-dark-900 border border-cyber-cyan transition-all">[AUDIO]</button>
+                    <button onclick="switchTab('video')" id="tab-video"
+                        class="px-4 py-2 rounded font-mono text-sm border border-gray-700 text-gray-400 hover:border-cyber-purple hover:text-cyber-purple transition-all">[VIDEO]</button>
+                </div>
+            </div>
+
+            <!-- Player Container -->
+            <div class="glass rounded-2xl overflow-hidden border border-cyber-cyan/20 relative scanline">
+                <!-- COMING SOON VIEW -->
+                <div id="view-coming-soon" class="p-12 md:p-24 text-center flex flex-col items-center justify-center">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 rounded-full border border-cyber-cyan bg-cyber-cyan/10 mb-6 animate-pulse-slow">
+                        <svg class="w-10 h-10 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-mono font-bold text-cyber-cyan mb-4 glitch-text"
+                        data-text="TRANSMISSION_PENDING">TRANSMISSION_PENDING</h3>
+                    <div class="h-1 w-24 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent mx-auto mb-6">
+                    </div>
+                    <p class="text-gray-400 font-mono max-w-lg mx-auto leading-relaxed">
+                        <span class="text-cyber-green">></span> Establishing secure channels...<br>
+                        <span class="text-cyber-green">></span> Calibrating audio frequencies...<br>
+                        <span class="text-cyber-green animate-pulse">_</span> Broadcast module will be initialized in
+                        upcoming cycles.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intelligence Hub (Blog Output) -->
+    <section id="intelligence" class="py-24 bg-dark-800/30 border-y border-cyber-cyan/10 relative">
+        <div class="absolute inset-0 neural-bg opacity-30 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-2 font-mono">
+                    <span class="text-cyber-purple">[</span> INTELLIGENCE_HUB <span class="text-cyber-purple">]</span>
+                </h2>
+                <div class="h-1 w-32 bg-gradient-to-r from-cyber-purple to-cyber-magenta mb-8"></div>
+            </div>
+
+            <!-- List View -->
+            <div id="blog-list-view">
+                <div id="blog-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Loaded dynamically via js/blog.js -->
+                    <div class="text-cyber-cyan font-mono animate-pulse">Initializing vault connection...</div>
+                </div>
+            </div>
+
+            <!-- Post View -->
+            <div id="blog-post-view" class="hidden mt-8">
+                <button onclick="window.location.hash=''"
+                    class="mb-6 px-4 py-2 glass rounded-lg text-gray-400 hover:text-cyber-cyan font-mono text-sm border-cyber-cyan/20">
+                    ← TERMINATE_VIEW
+                </button>
+                <article class="glass rounded-2xl p-8 md:p-12 border border-cyber-cyan/20">
+                    <header class="mb-10 pb-6 border-b border-white/10">
+                        <h1 id="post-title" class="text-3xl md:text-5xl font-bold text-white mb-4 glitch-text"
+                            data-text="..."></h1>
+                        <div id="post-meta" class="flex gap-4 text-sm font-mono text-gray-500">
+                        </div>
+                    </header>
+                    <div id="blog-content" class="max-w-4xl">
+                        <!-- Loaded dynamically via js/blog.js -->
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4"><span class="text-cyber-cyan">[</span>
+                    ABOUT_OPERATOR <span class="text-cyber-cyan">]</span></h2>
+                <div class="h-1 w-32 bg-gradient-to-r from-cyber-cyan to-cyber-purple mx-auto"></div>
+            </div>
+
+            <div class="glass rounded-2xl p-8 md:p-12 border border-white/10 space-y-8">
+                <!-- Host Introduction -->
+                <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+                    <img id="bio-avatar" src="https://github.com/abelbermudezm.png" alt="Abel"
+                        class="w-24 h-24 rounded-lg object-cover border border-cyber-cyan/50 shadow-lg shadow-cyber-cyan/20">
+                    <div>
+                        <h3 id="bio-name" class="text-xl font-bold text-white mb-2">Abel Bermúdez Muñoz</h3>
+                        <p class="text-cyber-cyan font-mono text-sm mb-2">Host & Founder</p>
+                        <p id="bio-location" class="text-gray-500 text-sm mb-4 font-mono"></p>
+                        <p id="bio-text" class="text-gray-300 leading-relaxed mb-4">
+                            Cybersecurity enthusiast, Psychology graduate, ghost writer, and staff member at Hackme.uy.
+                            Currently completing TryHackMe rooms and collaborating with Cyber Operatives.
+                            <span class="text-cyber-cyan font-semibold">Not an expert.</span> Just a curious mind
+                            learning in public.
+                        </p>
+                        <div class="flex gap-4 mt-4 font-mono text-sm">
+                            <a href="https://github.com/abelbermudezm" target="_blank"
+                                class="text-gray-400 hover:text-white border px-3 py-1 rounded border-white/10 hover:border-white/30">GitHub</a>
+                            <a href="https://www.linkedin.com/in/abelbermudezm/" target="_blank"
+                                class="text-gray-400 hover:text-cyber-cyan border px-3 py-1 rounded border-white/10 hover:border-cyber-cyan/30">LinkedIn</a>
+                            <a href="#"
+                                class="text-gray-400 hover:text-cyber-green border px-3 py-1 rounded border-white/10 hover:border-cyber-green/30">Website</a>
+                            <!-- CV Link is static for now, will link to Europass XML renderer later -->
+                            <a href="#"
+                                class="text-gray-400 hover:text-cyber-purple border px-3 py-1 rounded border-white/10 hover:border-cyber-purple/30">CV</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-white/5 pt-8">
+                    <h4 class="text-lg font-bold text-white mb-4">Why "DialektoSupra"?</h4>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        <span class="text-cyber-cyan font-semibold">Dialektos</span> (Greek): dia- (through) + lektos
+                        (selected/spoken).
+                        The word through which we express ourselves—language, idiom, discourse.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        <span class="text-cyber-purple font-semibold">Supra</span> (Latin): Above, beyond, transcending.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Together: A space that discusses the darknet transcending language barriers.
+                        The inverted word order? A subtle nod to the irreverence inherent in the culture we explore.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sponsors -->
+            <div class="mt-12 text-center">
+                <p class="text-sm text-gray-500 font-mono mb-4 uppercase tracking-wider">Foundational Sponsors &
+                    Partners</p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <div
+                        class="glass px-6 py-3 rounded-lg border border-cyber-cyan/30 text-cyber-cyan font-mono hover:bg-cyber-cyan/10">
+                        Darkipedia</div>
+                    <div
+                        class="glass px-6 py-3 rounded-lg border border-cyber-cyan/30 text-cyber-cyan font-mono hover:bg-cyber-cyan/10">
+                        DarkNetNews</div>
+                    <!-- Become a sponsor Dropdown -->
+                    <div class="relative group inline-block text-left z-20">
+                        <button
+                            class="glass px-6 py-3 rounded-lg border border-cyber-purple/30 border-dashed text-cyber-purple font-mono italic hover:bg-cyber-purple/10 hover:border-cyber-purple hover:text-white transition-all cursor-pointer flex items-center gap-2">
+                            <span>[ADD_NODE] ▼</span>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div
+                            class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-56 rounded-md shadow-lg glass border border-cyber-purple/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden">
+                            <div class="py-1" role="menu" aria-orientation="vertical">
+                                <div
+                                    class="px-4 py-2 text-[10px] text-cyber-purple/70 font-mono border-b border-cyber-purple/20">
+                                    SECURE_CHANNELS</div>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm font-mono text-gray-300 hover:bg-cyber-purple/20 hover:text-cyber-green"
+                                    role="menuitem">> XMPP (OMEMO)</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm font-mono text-gray-300 hover:bg-cyber-purple/20 hover:text-cyber-cyan"
+                                    role="menuitem">> Telegram</a>
+                                <a href="mailto:contact@darknetdialektosupra.com"
+                                    class="block px-4 py-2 text-sm font-mono text-gray-300 hover:bg-cyber-purple/20 hover:text-cyber-cyan"
+                                    role="menuitem">> ProtonMail</a>
+                                <div
+                                    class="px-4 py-2 text-[10px] text-cyber-purple/70 font-mono border-y border-cyber-purple/20 mt-1">
+                                    STANDARD_CHANNELS</div>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm font-mono text-gray-300 hover:bg-cyber-purple/20 hover:text-white"
+                                    role="menuitem">> LinkedIn</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm font-mono text-gray-300 hover:bg-cyber-purple/20 hover:text-white"
+                                    role="menuitem">> Substack PM</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Footer -->
+    <footer class="border-t border-cyber-cyan/20 bg-dark-900/80 pt-16 pb-8 relative overflow-hidden">
+        <div class="absolute inset-0 cyber-grid opacity-10 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12 border-b border-white/5 pb-12">
+                <!-- Video / Streaming -->
+                <div>
+                    <h4 class="text-cyber-cyan font-mono font-bold mb-4">VIDEO_NODES</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-cyan transition-colors">> Odysee</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-cyan transition-colors">> Rumble</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-cyan transition-colors">> DTube</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-cyan transition-colors">> BitChute</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-cyan transition-colors">> YouTube</a></li>
+                    </ul>
+                </div>
+                <!-- Audio / Podcast -->
+                <div>
+                    <h4 class="text-cyber-purple font-mono font-bold mb-4">AUDIO_NODES</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-purple transition-colors">> Spotify</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-purple transition-colors">> Apple
+                                Podcasts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-purple transition-colors">> iVoox</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-purple transition-colors">> Funkwhale</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-purple transition-colors">> Audius</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Decentralized / Darknet -->
+                <div>
+                    <h4 class="text-cyber-green font-mono font-bold mb-4">DECENTRALIZED</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-green transition-colors">> Dread
+                                (onion)</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-green transition-colors">> Mastodon</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-green transition-colors">> Hive /
+                                Steem</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-green transition-colors">> Minds</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-green transition-colors">> Bluesky</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Communities & Forums -->
+                <div>
+                    <h4 class="text-cyber-amber font-mono font-bold mb-4">COMMUNITIES</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-amber transition-colors">> Discord</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-amber transition-colors">> Telegram</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-amber transition-colors">>
+                                r/DarknetDialektoSupra</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-amber transition-colors">> Breach
+                                Forum</a></li>
+                    </ul>
+                </div>
+                <!-- Newsletters / Socials -->
+                <div>
+                    <h4 class="text-cyber-magenta font-mono font-bold mb-4">FEEDS</h4>
+                    <ul class="space-y-2 text-sm font-mono">
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-magenta transition-colors">> Substack</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-magenta transition-colors">> X
+                                (Twitter)</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-magenta transition-colors">> LinkedIn</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-magenta transition-colors">> Quora /
+                                Medium</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyber-magenta transition-colors">> TikTok /
+                                Threads</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-600">
+                <p>2026 DARKNET DIALEKTOSUPRA. OPSEC / PRIVACY / LEARNING.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-cyber-cyan transition-colors">PGP_KEY</a>
+                    <a href="#" class="hover:text-cyber-cyan transition-colors">ONION_MIRROR</a>
+                    <a href="#" class="hover:text-cyber-cyan transition-colors">RSS_FEED</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module">
+        import { initMatrixRain, initNavigation, initTypewriter, initTabs } from './js/main.js';
+        import { initAudioPlayer } from './js/player.js';
+        import { initBlog } from './js/blog.js';
+        import { initGithubBio } from './js/github-bio.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initMatrixRain();
+            initNavigation();
+            initTypewriter();
+            initTabs();
+            initAudioPlayer();
+            initBlog();
+            initGithubBio();
+        });
+    </script>
+</body>
+
+</html>

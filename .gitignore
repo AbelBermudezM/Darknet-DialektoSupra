@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.DS_Store
+
+# Originals and business docs (previous HTML/Markdown versions)
+1.0.0.md
+1.1.0.md
+1.2.0.md
+Business Plan - Darknet DialektoSupra Podcast 1.md
+player-template.html
+.vscode/
+.idea/
+*.local

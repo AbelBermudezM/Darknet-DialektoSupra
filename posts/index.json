@@ -1,0 +1,17 @@
+{
+  "posts": [
+    {
+      "slug": "01-welcome-to-dialektosupra",
+      "file": "01-welcome-to-dialektosupra.md",
+      "title": "Welcome to DialektoSupra",
+      "date": "2026-04-02",
+      "description": "An introduction to our unified multimedia platform.",
+      "tags": [
+        "introduction",
+        "privacy",
+        "opsec"
+      ],
+      "readTime": 1
+    }
+  ]
+}
