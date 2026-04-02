@@ -63,7 +63,7 @@ export async function initBlog() {
     if (!listContainer) return;
     
     try {
-        const res = await fetch('/Darknet-DialektoSupra/posts/index.json');
+        const res = await fetch('posts/index.json');
         if (!res.ok) throw new Error('Could not fetch index.json');
         const data = await res.json();
         
@@ -110,7 +110,7 @@ async function loadPost(postMetadata) {
     contentEl.innerHTML = '<div class="text-cyber-cyan animate-pulse">Loading decrypted payload...</div>';
     
     try {
-        const res = await fetch(`/Darknet-DialektoSupra/posts/${postMetadata.file}`);
+        const res = await fetch(`posts/${postMetadata.file}`);
         if (!res.ok) throw new Error('Failed to load markdown');
         const markdown = await res.text();
         

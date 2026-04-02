@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const postsDir = path.join(process.cwd(), 'posts');
+const postsDir = path.join(process.cwd(), 'public', 'posts');
 const outputFile = path.join(postsDir, 'index.json');
 
 function parseFrontmatter(content) {
