@@ -2,9 +2,58 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark-reasonable.min.css');
 @import url('https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica", "Arial", sans-serif;
+  --font-mono: "JetBrains Mono", "monospace";
+
+  --color-dark-900: #050508;
+  --color-dark-800: #0a0a0f;
+  --color-dark-700: #13131f;
+  --color-dark-600: #1c1c2e;
+  --color-dark-500: #252540;
+
+  --color-cyber-cyan: #00f0ff;
+  --color-cyber-green: #00ff9d;
+  --color-cyber-purple: #b829dd;
+  --color-cyber-magenta: #ff006e;
+  --color-cyber-amber: #ffb800;
+  --color-cyber-blue: #0066ff;
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-scan: scan 8s linear infinite;
+  --animate-flicker: flicker 3s linear infinite;
+  --animate-glitch: glitch 1s linear infinite;
+
+  @keyframes glow {
+      0% { box-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 15px #00f0ff; }
+      100% { box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff, 0 0 40px #00f0ff; }
+  }
+  @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+  }
+  @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+  }
+  @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+      52% { opacity: 0.2; }
+      54% { opacity: 0.8; }
+  }
+  @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+  }
+}
 
 @layer base {
     body {
@@ -161,7 +210,7 @@
 .callout p:last-child { margin-bottom: 0; }
 
 /* Internal Links */
-.internal-link { @apply text-cyber-purple font-medium !important; }
+.internal-link { @apply text-cyber-purple font-medium; }
 .internal-link::before { content: '[['; @apply opacity-50 font-mono text-sm; }
 .internal-link::after { content: ']]'; @apply opacity-50 font-mono text-sm; }
 

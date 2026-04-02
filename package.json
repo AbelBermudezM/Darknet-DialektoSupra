@@ -11,8 +11,6 @@
   },
   "devDependencies": {
     "@r4ai/remark-callout": "^0.6.2",
-    "@tailwindcss/postcss": "^4.2.2",
-    "autoprefixer": "^10.4.27",
     "highlight.js": "^11.9.0",
     "katex": "^0.16.10",
     "postcss": "^8.5.8",
@@ -26,8 +24,11 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.0",
     "remark-wiki-link": "^2.0.1",
-    "tailwindcss": "^3.4.19",
+    "tailwindcss": "^4.2.2",
     "unified": "^11.0.4",
     "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.2"
   }
 }
